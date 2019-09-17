@@ -2,7 +2,7 @@
   <div class="about">
     <h1>This is an about page</h1>
     <el-button @click="fetchData(false)" v-loading.fullscreen.lock="initLoading">获取数据</el-button>
-    <p>Input: {{input}}</p>
+    <p :class="[[style.input],'text',[test.text]]">Input: {{input}}</p>
     <el-input v-model="input" placeholder="请输入内容"></el-input>
     <el-table :data="tableData" style="width: 100%" v-loading="loading">
       <el-table-column prop="date" label="日期" width="180"></el-table-column>
@@ -14,6 +14,8 @@
 
 <script>
 import axios from "axios";
+import test from "@style/test.module.scss";
+
 export default {
   name: "about",
   data() {
@@ -27,7 +29,8 @@ export default {
         }
       ],
       loading: false,
-      initLoading: false
+      initLoading: false,
+      test: test
     };
   },
   methods: {
@@ -56,3 +59,14 @@ export default {
   }
 };
 </script>
+// 只写module时，直接用$style调用类名，填写module=XXX后需要用方括号引用
+<style lang="scss" module='style'>
+.input {
+  color: #409eff;
+}
+.text {
+  :global(&) {
+    color: #000;
+  }
+}
+</style>
