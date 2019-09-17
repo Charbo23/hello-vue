@@ -8,11 +8,16 @@ module.exports = {
     devServer: {
         port: 8080,
     },
+
     chainWebpack: (config) => {
         config.resolve.alias
             .set('@', resolve('src'))
             .set('@assets', resolve('src/assets'))
             .set('@style', resolve('src/style'))
 
+    },
+
+    css: {
+        sourceMap: true
     }
 };
