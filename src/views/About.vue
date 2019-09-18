@@ -2,7 +2,7 @@
   <div class="about">
     <h1>This is an about page</h1>
     <el-button @click="fetchData(false)" v-loading.fullscreen.lock="initLoading">获取数据</el-button>
-    <p :class="[[style.input],'text',[test.text]]">Input: {{input}}</p>
+    <p :class="[style.input,'text',test.text]" :id='test.test'>Input: {{input}}</p>
     <el-input v-model="input" placeholder="请输入内容"></el-input>
     <el-table :data="tableData" style="width: 100%" v-loading="loading">
       <el-table-column prop="date" label="日期" width="180"></el-table-column>
@@ -15,7 +15,6 @@
 <script>
 import axios from "axios";
 import test from "@style/test.module.scss";
-
 export default {
   name: "about",
   data() {
@@ -40,9 +39,9 @@ export default {
       }
       isInit ? (this.initLoading = true) : (this.loading = true);
 
-      axios.get("/mock.json").then(response => {
+      axios.get("https://my-json-server.typicode.com/charbo23/mock/tableData").then(response => {
         setTimeout(() => {
-          this.tableData = response.data.tableData;
+          this.tableData = response.data;
           this.loading = false;
           this.initLoading = false;
           this.$notify({
@@ -50,7 +49,7 @@ export default {
             message: "数据获取成功",
             type: "success"
           });
-        }, 2000);
+        }, 1000);
       });
     }
   },
@@ -59,11 +58,14 @@ export default {
   }
 };
 </script>
-// 只写module时，直接用$style调用类名，填写module=XXX后需要用方括号引用
+//只写module时，直接用$style调用类名，填写module=XXX后需要用XXX.XXX引用
+//标签选择器会污染全局
+//id选择器需绑定在id
 <style lang="scss" module='style'>
 .input {
   color: #409eff;
 }
+
 .text {
   :global(&) {
     color: #000;
