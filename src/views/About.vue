@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="about text-center">
     <h1>This is an about page</h1>
     <el-button @click="fetchData(false)" v-loading.fullscreen.lock="initLoading">获取数据</el-button>
     <p :class="[style.input,'text',test.text]" :id='test.test'>Input: {{input}}</p>
@@ -16,7 +16,7 @@
 import axios from "axios";
 import test from "@style/test.module.scss";
 export default {
-  name: "about",
+  name: "About",
   data() {
     return {
       input: "",

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home text-center">
     <img alt="Vue logo" src="@assets/logo.png" />
     <div>
       <p>
@@ -9,7 +9,14 @@
       </p>
       <el-button>el-button</el-button>
     </div>
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <HelloWorld msg="Welcome to Your Vue.js App">
+      <div>testing1</div>
+      <template #test>
+        <div ref="div">123</div>
+      </template>
+      <div>testing2</div>
+      <div>testing3</div>
+    </HelloWorld>
   </div>
 </template>
 
@@ -18,9 +25,12 @@
 import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
-  name: "home",
+  name: "Home",
   components: {
     HelloWorld
+  },
+  mounted() {
+    console.log(this.$refs.div.innerText);
   }
 };
 </script>
