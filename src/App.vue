@@ -4,9 +4,12 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> | 
       <router-link to="/grid">Grid</router-link> | 
-      <router-link to="/foo">Foo</router-link>
+      <router-link to="/test">Test</router-link> | 
+      <router-link to="/bag">Bag</router-link>
     </div>
-    <router-view />
+    <keep-alive include="About">
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 

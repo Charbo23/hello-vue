@@ -27,9 +27,14 @@ export default new Router({
       component: () => import('./views/Grid.vue'),
     },
     {
-      path: '/foo',
-      name: 'foo',
-      component: () => import('./views/Foo.vue'),
+      path: '/test',
+      name: 'test',
+      component: () => import('./views/Test.vue'),
+    },
+    {
+      path: '/bag',
+      name: 'bag',
+      component: () => import('./views/Bag.vue'),
     },
   ],
 });

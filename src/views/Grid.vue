@@ -1,5 +1,5 @@
 <template>
-  <div class="test">
+  <div class="grid">
     <h1 class="text-center">Grid Zone</h1>
     <div class="grid-box">
       <div>1</div>
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: "Test",
+  name: "Grid",
   data() {
     return {};
   }
@@ -30,6 +30,7 @@ export default {
   width: 300px;
   height: 300px;
   border: solid 3px #42b983;
+  margin: 0 auto;
   grid-template-rows: repeat(3,1fr);
   grid-template-columns: repeat(3,1fr);
   div{
