@@ -1,7 +1,7 @@
 <template>
   <div class="grid">
     <h1 class="text-center">Grid Zone</h1>
-    <div class="grid-box">
+    <div :class="[{[$style['grid-box']]:hasClass}]">
       <div>1</div>
       <div>2</div>
       <div>3</div>
@@ -19,12 +19,14 @@
 export default {
   name: "Grid",
   data() {
-    return {};
+    return {
+      hasClass:true
+    };
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" module>
 .grid-box {
   display: grid;
   width: 300px;

@@ -30,7 +30,7 @@ export default {
     HelloWorld
   },
   mounted() {
-    console.log(this.$refs.div.innerText);
+    // console.log(this.$refs.div.innerText);
   }
 };
 </script>

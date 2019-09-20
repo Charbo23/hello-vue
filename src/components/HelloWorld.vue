@@ -83,8 +83,8 @@ export default {
     msg: String
   },
   mounted() {
-    console.log(this.$refs.h1);
-    console.log(this.$slots);
+    // console.log(this.$refs.h1);
+    // console.log(this.$slots);
   }
 };
 </script>

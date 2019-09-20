@@ -36,5 +36,10 @@ export default new Router({
       name: 'bag',
       component: () => import('./views/Bag.vue'),
     },
+    {
+      path: '/user-list',
+      name: 'userList',
+      component: () => import('./views/UserList.vue'),
+    },
   ],
 });

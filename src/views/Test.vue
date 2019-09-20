@@ -1,14 +1,15 @@
 <template>
   <div class="test text-center">
     <h1>{{title()}}</h1>
-    <a href="https://www.baidu.com"  @click.prevent="alert(123)">baidu</a>
+    <a href="https://www.baidu.com" @click.prevent="alert(123)">baidu</a>
     <h2>{{count}}</h2>
     <el-button class="btn" @click="addCount(1)">单击</el-button>
     <button class="btn" @dblclick="addCount(10)">双击</button>
     <div class="canvas" @mousemove="trackMouse">
-      <h2 class="track-text">
+      <h2 class="track-text" @mousemove.stop>
         （{{this.mouseX}},{{this.mouseY}}）
-        <span @mousemove.stop><br>Stop</span>
+        <br />
+        <span>Stop</span>
       </h2>
     </div>
   </div>
@@ -26,20 +27,20 @@ export default {
     };
   },
   methods: {
-    title:function() {
+    title: function() {
       return "Test Zone";
     },
-    addCount:function(diff) {
+    addCount: function(diff) {
       this.count += diff;
     },
     trackMouse: _.throttle(function(e) {
       this.mouseX = e.offsetX;
       this.mouseY = e.offsetY;
     }, 60),
-    stopMoving:function(){
+    stopMoving: function() {
       event.stopPropagation();
     },
-    alert:function(msg){
+    alert: function(msg) {
       alert(msg);
     }
   }
@@ -58,6 +59,7 @@ export default {
   height: 400px;
   border: 1px solid #42b983;
   box-sizing: border-box;
+  cursor: default;
   // 子绝父相
   position: relative;
 }
