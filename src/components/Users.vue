@@ -3,6 +3,7 @@
     <ul>
       <li v-for="user in userList" :key="user.id" @click="user.show=!user.show">
         <h2 :class="$style['user-name']">{{user.name}}</h2>
+        <p v-show="user.email">{{user.email}}</p>
         <p v-show="user.show" :class="$style['user-position']">{{user.position}}</p>
       </li>
     </ul>
@@ -54,16 +55,16 @@ export default {
       justify-content: center;
       text-align: center;
       flex-wrap: wrap;
+      p {
+        flex-basis: 100%;
+        margin: 0;
+      }
     }
   }
 }
 .user-name {
   flex-basis: 100%;
   flex-grow: 1;
-  margin: 0;
-}
-.user-position {
-  flex-basis: 100%;
   margin: 0;
 }
 </style>
