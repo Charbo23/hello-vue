@@ -61,9 +61,9 @@ body {
   opacity: 0;
 }
 .fade-enter {
-  transform: translateX(31px);
+  transform: translateX(50px);
 }
 .fade-leave-to {
-  transform: translateX(-31px);
+  transform: translateX(-50px);
 }
 </style>

@@ -1,30 +1,31 @@
 <template>
   <div :class="$style.users">
     <ul>
-      <li v-for="user in users" :key="user.id" @click="user.show=!user.show">
+      <li v-for="user in userList" :key="user.id" @click="user.show=!user.show">
         <h2 :class="$style['user-name']">{{user.name}}</h2>
         <p v-show="user.show" :class="$style['user-position']">{{user.position}}</p>
       </li>
     </ul>
+    <el-button @click="popUser">删除</el-button>
   </div>
 </template>
 
 <script>
-import shortid from "shortid";
 export default {
   name: "Users",
   data() {
-    return {
-      users: []
-    };
+    return {};
   },
-  created() {
-    this.users = Array.from({ length: 9 }, (value, index) => ({
-      id: shortid.generate(),
-      name: "Henry",
-      position: "Web developer",
-      show: false
-    }));
+  props: {
+    userList: {
+      type: Array,
+      required: true
+    }
+  },
+  methods: {
+    popUser: function() {
+      this.userList.pop();
+    }
   }
 };
 </script>

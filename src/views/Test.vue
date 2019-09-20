@@ -1,7 +1,7 @@
 <template>
   <div class="test text-center">
     <h1 class="title">{{title()}}</h1>
-    <a href="https://www.baidu.com" @click.prevent="alert(123)">baidu</a>
+    <a href="https://www.baidu.com" @click.prevent="alert('Default event prevented !')">baidu</a>
     <h2>{{count}}</h2>
     <el-button class="btn" @click="addCount(1)">单击</el-button>
     <button class="btn" @dblclick="addCount(10)">双击</button>
@@ -41,7 +41,13 @@ export default {
       event.stopPropagation();
     },
     alert: function(msg) {
-      alert(msg);
+      this.$alert(msg, "提示", { type: "success" })
+        .then(() => {
+          console.log("confirmed");
+        })
+        .catch(() => {
+          console.log("canceled");
+        });
     }
   }
 };
