@@ -1,6 +1,6 @@
 <template>
   <div class="grid">
-    <h1 class="text-center">Grid Zone</h1>
+    <h1 class="text-center title">Grid Zone</h1>
     <div :class="[{[$style['grid-box']]:hasClass}]">
       <div>1</div>
       <div>2</div>

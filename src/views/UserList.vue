@@ -25,4 +25,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.user-list {
+  max-height: calc(100vh - 80px);
+  overflow: hidden;
+}
 </style>

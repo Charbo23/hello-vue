@@ -20,6 +20,8 @@
 body {
   // 加入动画需禁止横向滚动条
   overflow-x: hidden;
+  margin:0;
+  padding:0;
 }
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -46,6 +48,9 @@ body {
      margin: 0 10px;
     }
   }
+}
+.title{
+  margin-top: 0;
 }
 .fade-enter-active,
 .fade-leave-active {

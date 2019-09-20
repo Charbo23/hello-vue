@@ -46,7 +46,7 @@ export default {
       padding: 20px 0;
       border: 1px solid #222;
       margin: 10px;
-      height: 100px;
+      height: 80px;
       cursor: pointer;
       display: flex;
       align-items: center;

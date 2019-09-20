@@ -1,6 +1,6 @@
 <template>
-  <footer class="footer text-center"> 
-      <p>Copyright 2019 Charbo</p>
+  <footer class="footer text-center">
+    <p>Copyright 2019 Charbo</p>
   </footer>
 </template>
 
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.footer{
+.footer {
   padding: 10px 0;
   background-color: lightgreen;
 }

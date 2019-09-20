@@ -104,6 +104,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.bag{
+  padding-top: 50px;
+}
 .bag-img {
   // css中使用alias需要加~
   background: url("~@assets/bag.png") center no-repeat;

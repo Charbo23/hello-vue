@@ -1,6 +1,6 @@
 <template>
   <div class="about text-center">
-    <h1>This is an about page</h1>
+    <h1 class="title">This is an about page</h1>
     <el-button @click="fetchData(false)" v-loading.fullscreen.lock="initLoading">获取数据</el-button>
     <p :class="[style.input,'text',test.text]" :id='test.test'>Input: {{input}}</p>
     <el-input v-model="input" placeholder="请输入内容"></el-input>

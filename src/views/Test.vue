@@ -1,6 +1,6 @@
 <template>
   <div class="test text-center">
-    <h1>{{title()}}</h1>
+    <h1 class="title">{{title()}}</h1>
     <a href="https://www.baidu.com" @click.prevent="alert(123)">baidu</a>
     <h2>{{count}}</h2>
     <el-button class="btn" @click="addCount(1)">单击</el-button>

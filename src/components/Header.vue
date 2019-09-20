@@ -1,6 +1,6 @@
 <template>
   <header class="header text-center">
-    <h1 class="title">{{title}}</h1>
+    <h2 class="title">{{title}}</h2>
   </header>
 </template>
 
@@ -23,6 +23,10 @@ export default {
 <style lang="scss" scoped>
 .header {
   background-color: lightgreen;
- overflow: hidden;
+  overflow: hidden;
+  padding: 20px 0;
+  .title{
+    margin: 0;
+  }
 }
 </style>
