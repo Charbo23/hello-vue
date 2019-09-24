@@ -1,5 +1,5 @@
 const path = require('path');
-
+const tableData = require('./public/mock.json');
 function resolve(dir) {
     return path.join(__dirname, dir);
 }
@@ -22,6 +22,11 @@ module.exports = {
                 changeOrigin: true,
                 pathRewrite: { '^/auth': '' }
             }
+        },
+        before: function (app) {
+            app.get('/api/mock', (req, res) => {
+                res.json(tableData);
+            })
         }
     },
     chainWebpack: (config) => {
