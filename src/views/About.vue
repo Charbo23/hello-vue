@@ -38,8 +38,10 @@ export default {
         return;
       }
       isInit ? (this.initLoading = true) : (this.loading = true);
-
-      axios.get("https://my-json-server.typicode.com/charbo23/mock/tableData").then(response => {
+      //使用devserver.proxy代理跨域请求
+      // axios.get("/auth/tableData").then(response => {
+      axios.get("https://my-json-server.typicode.com/charbo23/mock/tableData")
+      .then(response => {
         setTimeout(() => {
           this.tableData = response.data;
           this.loading = false;

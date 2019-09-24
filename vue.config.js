@@ -7,6 +7,22 @@ function resolve(dir) {
 module.exports = {
     devServer: {
         port: 8080,
+        open: true,//自动打开浏览器窗口
+        https: false,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:9000',
+                ws: true,
+                changeOrigin: true,
+                pathRewrite: { '^/api': '' }
+            },
+            '/auth': {
+                target: 'http://localhost:9000',
+                ws: true,
+                changeOrigin: true,
+                pathRewrite: { '^/auth': '' }
+            }
+        }
     },
     chainWebpack: (config) => {
         config.resolve.alias
