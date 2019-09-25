@@ -9,7 +9,7 @@
       <router-link to="/user-list">UserList</router-link>
     </div>
     <transition name="fade" mode="out-in">
-      <keep-alive include="About">
+      <keep-alive include="About,UserList">
         <router-view />
       </keep-alive>
     </transition>

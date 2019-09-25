@@ -43,10 +43,10 @@ export default {
     alert: function(msg) {
       this.$alert(msg, "提示", { type: "success" })
         .then(() => {
-          console.log("confirmed");
+          // console.log("confirmed");
         })
         .catch(() => {
-          console.log("canceled");
+          // console.log("canceled");
         });
     }
   }

@@ -1,4 +1,7 @@
 const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const webpack = require('webpack');
+
 const tableData = require('./public/mock.json');
 function resolve(dir) {
     return path.join(__dirname, dir);
@@ -27,6 +30,16 @@ module.exports = {
             app.get('/api/mock', (req, res) => {
                 res.json(tableData);
             })
+        }
+    },
+    configureWebpack: config => {
+        if (process.env.NODE_ENV === 'production') {
+            return {
+                plugins: [
+                    process.env.SHOW_REPORT === 'true' ? new BundleAnalyzerPlugin() : function () { },
+                    new webpack.BannerPlugin('© 2019 Charbo. All Right Reserved.')
+                ]
+            }
         }
     },
     chainWebpack: (config) => {
