@@ -32,13 +32,11 @@ module.exports = {
             })
         }
     },
-    configureWebpack: config => {
-        if (process.env.NODE_ENV === 'production') {
-            return {
-                plugins: [
-                    process.env.SHOW_REPORT === 'true' ? new BundleAnalyzerPlugin() : function () { },
-                    new webpack.BannerPlugin('© 2019 Charbo. All Right Reserved.')
-                ]
+    configureWebpack: (config) => {
+        if (process.env.NODE_ENV === "production") {
+            config.plugins.push(new webpack.BannerPlugin('© 2019 Charbo. All Right Reserved.'));
+            if (process.env.ANALYZE === 'true') {
+                config.plugins.push(new BundleAnalyzerPlugin());
             }
         }
     },
