@@ -1,11 +1,19 @@
 <template>
   <div :class="$style.users">
     <ul>
-      <li v-for="user in userList" :key="user.id" @click="user.show=!user.show">
-        <h2 :class="$style['user-name']">{{user.name}}</h2>
-        <p v-show="user.email">{{user.email}}</p>
-        <p v-show="user.show" :class="$style['user-position']">{{user.position}}</p>
-      </li>
+      <template v-if="userList.type==='plainList'">
+        <li v-for="user in userList.items" :key="user.id" @click="user.show=!user.show">
+          <h2 :class="$style['user-name']">{{user.name}}</h2>
+          <p v-show="user.email">{{user.email}}</p>
+          <p v-show="user.show" :class="$style['user-position']">{{user.position}}</p>
+        </li>
+      </template>
+      <template v-else>
+        <li v-for="user in userList.items" :key="user.id" @click="getDetail(user.id)">
+          <h2 :class="$style['user-name']">{{user.name}}</h2>
+          <p v-show="user.email">{{user.email}}</p>
+        </li>
+      </template>
     </ul>
     <el-button @click="popUser">删除</el-button>
   </div>
@@ -19,13 +27,16 @@ export default {
   },
   props: {
     userList: {
-      type: Array,
+      type: Object,
       required: true
     }
   },
   methods: {
     popUser: function() {
-      this.userList.pop();
+      this.userList.items.pop();
+    },
+    getDetail: function(userId) {
+      this.$router.push({ name: 'userInfo', params: { userId: userId } });
     }
   }
 };

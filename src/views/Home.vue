@@ -1,13 +1,21 @@
 <template>
   <div class="home text-center">
     <img alt="Vue logo" src="@assets/logo.png" />
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
     <div>
       <p>
         If Element is successfully added to this project, you'll see an
         <code v-text="'<el-button>'"></code>
         below
       </p>
-      <el-button>el-button</el-button>
+      <router-link to="/home/news" class="home-link">
+        <el-button>新闻</el-button>
+      </router-link>
+      <router-link to="/home/message" class="home-link">
+        <el-button>消息</el-button>
+      </router-link>
     </div>
     <HelloWorld msg="Welcome to Your Vue.js App">
       <div>testing1</div>
@@ -26,12 +34,32 @@ import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
   name: "Home",
+  data() {
+    return {};
+  },
   components: {
     HelloWorld
   },
   mounted() {
     // console.log(this.$refs.div.innerText);
-  }
+  },
+  methods: {}
 };
 </script>
+
+<style lang="scss" scoped>
+.home-link {
+  display: inline-block;
+  & + & {
+    margin-left: 10px;
+  }
+}
+.router-link-exact-active {
+  .el-button {
+    color: #409eff;
+    border-color: #c6e2ff;
+    background-color: #ecf5ff;
+  }
+}
+</style>
 

@@ -2,7 +2,7 @@
   <div class="about text-center">
     <h1 class="title">This is an about page</h1>
     <el-button @click="fetchData(false)" v-loading.fullscreen.lock="initLoading">获取数据</el-button>
-    <p :class="[style.input,'text',test.text]" :id='test.test'>Input: {{input}}</p>
+    <p :class="[style.input,'text',test.text]" :id="test.test">Input: {{input}}</p>
     <el-input v-model="input" placeholder="请输入内容"></el-input>
     <el-table :data="tableData" style="width: 100%" v-loading="loading">
       <el-table-column prop="date" label="日期" width="180"></el-table-column>
@@ -40,19 +40,29 @@ export default {
       isInit ? (this.initLoading = true) : (this.loading = true);
       //使用devserver.proxy代理跨域请求
       // axios.get("/auth/tableData").then(response => {
-      axios.get("https://my-json-server.typicode.com/charbo23/mock/tableData")
-      .then(response => {
-        setTimeout(() => {
-          this.tableData = response.data;
+      axios
+        .get("https://my-json-server.typicode.com/charbo23/mock/tableData")
+        .then(response => {
+          setTimeout(() => {
+            this.tableData = response.data;
+            this.loading = false;
+            this.initLoading = false;
+            this.$notify({
+              title: "成功",
+              message: "数据获取成功",
+              type: "success"
+            });
+          }, 1000);
+        })
+        .catch(error => {
           this.loading = false;
           this.initLoading = false;
           this.$notify({
-            title: "成功",
-            message: "数据获取成功",
-            type: "success"
+            title: "数据获取失败",
+            message: error.message,
+            type: "error"
           });
-        }, 1000);
-      });
+        });
     }
   },
   created: function() {
