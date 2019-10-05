@@ -1,10 +1,10 @@
 <template>
-  <div class="user-info">
-    <div class="info-box" v-loading="loading">
+  <div class="user-profile">
+    <div class="profile-box" v-loading="loading">
       <!-- <h2 class="user-name">userId: {{$route.params.userId}}</h2> -->
-      <h3 v-for="(item,name) in userInfo" :key="name" class="info-item">
-        <span class="info-label">{{ name }}:</span>
-        <span class="info-content">{{ item }}</span>
+      <h3 v-for="(item,name) in userProfile" :key="name" class="profile-item">
+        <span class="profile-label">{{ name }}:</span>
+        <span class="profile-content">{{ item }}</span>
       </h3>
     </div>
   </div>
@@ -14,20 +14,20 @@
 import axios from "axios";
 
 export default {
-  name: "UserInfo",
+  name: "Profile",
   data() {
     return {
-      userInfo: {},
+      userProfile: {},
       loading: false
     };
   },
   methods: {
-    getUserInfo(userId) {
+    getUserProfile(userId) {
       this.loading = true;
       axios
         .get("https://jsonplaceholder.typicode.com/users/" + userId)
         .then(res => {
-          this.userInfo = res.data;
+          this.userProfile = res.data;
           this.loading = false;
         })
         .catch(error => {
@@ -41,38 +41,37 @@ export default {
     }
   },
   created() {
-    // console.log(this.$route.params);
-    const userId = this.$route.params.userId;
-    this.getUserInfo(userId);
+    const userId = this.$route.query.userId;
+    this.getUserProfile(userId);
   },
   beforeRouteUpdate(to, from, next) {
     // just use `this`
-    this.getUserInfo(to.params.userId);
+    this.getUserProfile(to.query.userId);
     next();
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.user-info {
+.user-profile {
   padding: 0 50px;
 }
-.info-box {
+.profile-box {
   width: 100%;
   min-height: 300px;
 }
-.info-label {
+.profile-label {
   display: inline-block;
   width: 120px;
   text-transform: capitalize;
 }
-.info-content {
+.profile-content {
   font-weight: normal;
 }
-.info-item:first-of-type {
+.profile-item:first-of-type {
   margin-top: 0;
 }
-.info-item:last-of-type {
+.profile-item:last-of-type {
   margin-bottom: 0;
 }
 </style>

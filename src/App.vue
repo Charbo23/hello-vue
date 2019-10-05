@@ -12,7 +12,8 @@
         <router-link to="/test">Test</router-link>
         <router-link to="/bag">Bag</router-link>
         <router-link to="/user-list">UserList</router-link>
-        <router-link to="/user-info/6">UserInfo</router-link>
+        <router-link :to="{name:'userInfo',params:{userId:2,test:1}}">UserInfo</router-link>
+        <router-link :to="{path:'/profile',query:{userId:1}}">UserProfile</router-link>
       </div>
       <transition name="fade" mode="out-in">
         <keep-alive include="About,UserList,Home">
@@ -48,6 +49,10 @@ body {
   // 加入动画需禁止横向滚动条
   overflow-x: hidden;
   margin: 0;
+  padding: 0;
+}
+ul {
+  list-style-type: none;
   padding: 0;
 }
 #app {

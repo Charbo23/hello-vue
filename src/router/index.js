@@ -12,6 +12,7 @@ const UserList = () => import('@/views/UserList.vue');
 const UserInfo = () => import('@/views/UserInfo.vue');
 const HomeNews = () => import('@/components/HomeNews.vue');
 const HomeMessage = () => import('@/components/HomeMessage.vue');
+const Profile = () => import('@/components/Profile.vue');
 
 export default new Router({
   mode: 'history',
@@ -68,6 +69,11 @@ export default new Router({
       path: '/user-info/:userId',
       name: 'userInfo',
       component: UserInfo,
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile,
     },
     {
       path: '*',
