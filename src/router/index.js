@@ -26,59 +26,69 @@ export default new Router({
     {
       path: '/home',
       component: Home,
+      meta: { title: '首页' },
       children: [{
         path: '',
         name: 'home',
-        redirect: 'news'
+        redirect: 'news',
       }, {
         path: 'news',
         name: 'homeNews',
-        component: HomeNews
+        component: HomeNews,
       }, {
         path: 'message',
         name: 'homeMessage',
-        component: HomeMessage
+        component: HomeMessage,
+        meta: { title: '消息' },
       }]
     },
     {
       path: '/about',
       name: 'about',
       component: About,
+      meta: { title: '关于' }
     },
     {
       path: '/grid',
       name: 'grid',
       component: Grid,
+      meta: { title: 'Grid' }
     },
     {
       path: '/test',
       name: 'test',
       component: Test,
+      meta: { title: 'Test' }
     },
     {
       path: '/bag',
       name: 'bag',
       component: Bag,
+      meta: { title: '打气小游戏' }
     },
     {
       path: '/user-list',
       name: 'userList',
       component: UserList,
+      meta: { title: '用户列表' }
     },
     {
       path: '/user-info/:userId',
       name: 'userInfo',
       component: UserInfo,
+      meta: { title: '用户信息' }
     },
     {
       path: '/profile',
       name: 'profile',
       component: Profile,
+      meta: { title: '用户资料' }
     },
     {
       path: '*',
       name: 'notFound',
-      component: NotFound
+      component: NotFound,
+      meta: { title: '页面未找到' }
     }
   ],
 });
