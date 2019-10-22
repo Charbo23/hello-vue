@@ -35,13 +35,32 @@ import HelloWorld from "@/components/HelloWorld.vue";
 export default {
   name: "Home",
   data() {
-    return {};
+    return {
+      curRoute: "/home/news"
+    };
   },
   components: {
     HelloWorld
   },
   mounted() {
     // console.log(this.$refs.div.innerText);
+  },
+  activated() {
+    // this.$notify({
+    //   title: "Activated",
+    //   type: "success"
+    // });
+    this.$router.push(this.curRoute);
+  },
+  deactivated() {
+    // this.$notify({
+    //   title: "Deactivated",
+    //   iconClass: "el-icon-remove-outline warning"
+    // });
+  },
+  beforeRouteLeave(to, from, next) {
+    this.curRoute = from;
+    next();
   },
   methods: {}
 };

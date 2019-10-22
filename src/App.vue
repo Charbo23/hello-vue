@@ -30,7 +30,7 @@ export default {
   name: "App",
   data() {
     return {
-      homeLink: "/home"
+      homeLink: "/"
     };
   },
   components: {
@@ -68,6 +68,9 @@ ul {
   min-height: calc(100vh - 72px);
   box-sizing: border-box;
   padding-bottom: 30px;
+}
+.warning{
+  color: #909399;
 }
 #nav {
   padding: 30px;

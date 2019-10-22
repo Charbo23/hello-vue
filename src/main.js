@@ -3,7 +3,7 @@ import App from './App.vue';
 import router from './router';
 import './router/guard'; // 全局路由守卫
 import store from './store';
-import './plugins/element.js';
+import './plugins/element';
 
 Vue.config.productionTip = false;
 

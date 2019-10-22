@@ -30,7 +30,8 @@ export default new Router({
       children: [{
         path: '',
         name: 'home',
-        redirect: 'news',
+        // 为了保存状态加入路由内导航，不需要这个
+        // redirect: 'news',
       }, {
         path: 'news',
         name: 'homeNews',
