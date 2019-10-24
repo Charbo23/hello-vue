@@ -3,9 +3,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const webpack = require('webpack');
 
 const tableData = require('./public/mock.json');
-function resolve(dir) {
-    return path.join(__dirname, dir);
-}
+
 
 module.exports = {
     devServer: {
@@ -42,9 +40,9 @@ module.exports = {
     },
     chainWebpack: (config) => {
         config.resolve.alias
-            .set('@', resolve('src'))
-            .set('@assets', resolve('src/assets'))
-            .set('@style', resolve('src/style'));
+            .set('@', path.resolve(__dirname, 'src'))
+            .set('@assets', path.resolve(__dirname,'src/assets'))
+            .set('@style', path.resolve(__dirname,'src/style'));
         config.performance
             .set('maxAssetSize', 1024 * 1024)
             .set('maxEntrypointSize', 1024 * 1024);
